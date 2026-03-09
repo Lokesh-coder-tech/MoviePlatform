@@ -1,0 +1,54 @@
+$primary-color: #e50914; // Netflix Red
+$bg-dark: #0a0a0a;
+$text-main: #ffffff;
+$text-dim: #a3a3a3;
+$glass-bg: rgba(255, 255, 255, 0.05);
+$glass-border: rgba(255, 255, 255, 0.1);
+
+.search-page {
+  padding: 100px 6% 50px; // Top padding for navbar
+  min-height: 100vh;
+
+  .search-bar-container {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    
+    .search-input {
+      width: 100%;
+      padding: 18px 30px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      color: white;
+      outline: none;
+      transition: all 0.3s ease;
+      
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 20px rgba($primary-color, 0.2);
+      }
+
+      @media (max-width: 600px) {
+        padding: 14px 20px;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .loader, .no-results {
+    text-align: center;
+    color: $text-dim;
+    font-size: 1.1rem;
+    margin-top: 40px;
+  }
+
+  .movie-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+
+    @media (max-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+  }
+}

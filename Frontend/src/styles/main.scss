@@ -1,0 +1,26 @@
+$primary-color: #e50914; // Netflix Red
+$bg-dark: #0a0a0a;
+$text-main: #ffffff;
+$text-dim: #a3a3a3;
+$glass-bg: rgba(255, 255, 255, 0.05);
+$glass-border: rgba(255, 255, 255, 0.1);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $bg-dark;
+  color: $text-main;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.glass-effect {
+  background: $glass-bg;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid $glass-border;
+}

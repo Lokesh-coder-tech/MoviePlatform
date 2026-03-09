@@ -1,0 +1,178 @@
+$primary-color: #e50914; // Netflix Red
+$bg-dark: #0a0a0a;
+$text-main: #ffffff;
+$text-dim: #a3a3a3;
+$glass-bg: rgba(255, 255, 255, 0.05);
+$glass-border: rgba(255, 255, 255, 0.1);
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6%;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+
+  .logo {
+    a {
+      font-size: clamp(1.2rem, 5vw, 1.6rem);
+      font-weight: 900;
+      color: $primary-color;
+      text-decoration: none;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 15px rgba($primary-color, 0.3);
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(15px, 3vw, 30px);
+
+    // Links for Home, Search, etc.
+    a:not(.signup-btn):not(.login-link) {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+
+      &:hover {
+        color: white;
+      }
+
+      @media (max-width: 600px) {
+        display: none; // Mobile par sirf icons ya buttons dikhayenge
+      }
+    }
+
+    // Auth Buttons Group (Login/Signup)
+    .auth-btns {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .login-link {
+        color: white;
+        text-decoration: none;
+        font-size: 0.95rem;
+        &:hover { color: $primary-color; }
+      }
+
+      .signup-btn {
+        background: $primary-color;
+        padding: 8px 20px;
+        border-radius: 6px;
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba($primary-color, 0.3);
+        font-size: 0.9rem;
+
+        @media (max-width: 480px) {
+          padding: 6px 12px;
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    // Logged In Section (Logout + User Badge)
+    .user-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      .logout-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 6px 15px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: rgba($primary-color, 0.1);
+          border-color: $primary-color;
+          color: $primary-color;
+        }
+
+        @media (max-width: 480px) {
+          padding: 5px 10px;
+          font-size: 0.75rem;
+        }
+      }
+
+      .user-badge {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, $primary-color, #ff4d4d);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        color: white;
+        font-size: 1rem;
+        box-shadow: 0 0 15px rgba($primary-color, 0.4);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+
+        @media (max-width: 480px) {
+          width: 32px;
+          height: 32px;
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+  .admin-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #00f2fe !important; // Neon Blue/Cyan for Admin
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    border-radius: 20px;
+    background: rgba(0, 242, 254, 0.05);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(0, 242, 254, 0.2);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+      transform: translateY(-1px);
+    }
+
+    svg {
+      color: #00f2fe;
+    }
+
+    @media (max-width: 900px) {
+      span { display: none; } // Mobile/Tablet par sirf icon dikhega top nav mein
+      padding: 8px;
+    }
+  }
+
+}
+
+// Tablet and Small Screen Adjustments
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 4%;
+    height: 60px;
+  }
+}

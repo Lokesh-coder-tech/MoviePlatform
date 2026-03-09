@@ -1,0 +1,151 @@
+$primary-color: #e50914; // Netflix Red
+$bg-dark: #0a0a0a;
+$text-main: #ffffff;
+$text-dim: #a3a3a3;
+$glass-bg: rgba(255, 255, 255, 0.05);
+$glass-border: rgba(255, 255, 255, 0.1);
+
+.login-wrapper {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #050505;
+  overflow: hidden;
+  padding: 20px; // Mobile par card aur screen edge mein gap ke liye
+
+  // Background Animated Blobs - Hidden on small mobiles for performance
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.2;
+    animation: move 10s infinite alternate;
+
+    @media (max-width: 600px) {
+      display: none; 
+    }
+  }
+  .blob-1 { width: 400px; height: 400px; background: $primary-color; top: -10%; left: -10%; }
+  .blob-2 { width: 350px; height: 350px; background: #3b82f6; bottom: -10%; right: -5%; animation-delay: -5s; }
+
+  .login-card {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 450px;
+    // clamp(min, preferred, max) - adjusts padding based on screen size
+    padding: clamp(30px, 10vw, 60px) clamp(20px, 5vw, 40px);
+    border-radius: 24px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+    @media (max-width: 480px) {
+      border-radius: 16px;
+      padding: 40px 20px;
+    }
+
+    .login-header {
+      margin-bottom: clamp(25px, 5vw, 40px);
+      
+      h2 { 
+        font-size: clamp(1.8rem, 6vw, 2.2rem); 
+        margin-bottom: 8px; 
+        font-weight: 800; 
+      }
+      p { 
+        color: $text-dim; 
+        font-size: clamp(0.85rem, 3vw, 0.95rem); 
+      }
+    }
+
+    .input-field {
+      position: relative;
+      margin-bottom: 30px;
+
+      input {
+        width: 100%;
+        padding: 12px 0;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        font-size: 1.1rem;
+        outline: none;
+        transition: 0.3s;
+
+        &:focus ~ label,
+        &:valid ~ label {
+          top: -20px;
+          font-size: 0.85rem;
+          color: $primary-color;
+        }
+
+        &:focus { border-bottom-color: $primary-color; }
+      }
+
+      label {
+        position: absolute;
+        top: 12px;
+        left: 0;
+        color: $text-dim;
+        pointer-events: none;
+        transition: 0.3s;
+      }
+    }
+
+    .login-submit {
+      width: 100%;
+      height: 55px;
+      border: none;
+      outline: none;
+      background: $primary-color;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 10px 20px rgba($primary-color, 0.3);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px rgba($primary-color, 0.5);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    .login-footer {
+      margin-top: 30px;
+      p { 
+        color: $text-dim; 
+        font-size: 0.9rem; 
+      }
+      span { 
+        color: $primary-color; 
+        text-decoration: none; 
+        font-weight: 600; 
+        cursor: pointer;
+        margin-left: 5px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@keyframes move {
+  from { transform: translate(0, 0) rotate(0deg); }
+  to { transform: translate(30px, 50px) rotate(15deg); }
+}
